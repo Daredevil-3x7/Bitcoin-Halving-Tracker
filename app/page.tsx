@@ -16,9 +16,12 @@ import { MobileNav } from "@/components/mobile-nav"
 import { Terminal, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import { AddToCalendar } from "@/components/add-to-calendar"
+import { TipDialog } from "@/components/tip-dialog"
+import { Heart } from "lucide-react"
 
 export default function Home() {
   const [currentBlock, setCurrentBlock] = useState<number>(0)
+  const [showTipDialog, setShowTipDialog] = useState(false)
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -83,6 +86,15 @@ export default function Home() {
             >
               Network <ExternalLink className="w-3 h-3" />
             </Link>
+            <Button
+              onClick={() => setShowTipDialog(true)}
+              variant="outline"
+              size="sm"
+              className="font-mono border-red-500/30 text-red-400 hover:bg-red-500/10 hover:text-red-300 rounded-sm flex items-center gap-2"
+            >
+              <Heart className="w-4 h-4 fill-red-500/50" />
+              <span className="hidden lg:inline">Support</span>
+            </Button>
           </nav>
 
           <MobileNav />
@@ -277,6 +289,9 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {/* Tip Dialog */}
+      <TipDialog open={showTipDialog} onOpenChange={setShowTipDialog} />
     </div>
   )
 }
