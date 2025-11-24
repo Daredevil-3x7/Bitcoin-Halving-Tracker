@@ -1,0 +1,101 @@
+"use client"
+
+import { useEffect, useState } from "react"
+import { intervalToDuration } from "date-fns"
+import type { Duration } from "date-fns"
+import { ShareDialog } from "@/components/share-dialog"
+
+const TARGET_DATE = new Date("2025-12-13T00:48:06Z")
+
+export function HalvingCountdown() {
+  const [duration, setDuration] = useState<Duration>({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  })
+  const [isMounted, setIsMounted] = useState(false)
+
+  useEffect(() => {
+    setIsMounted(true)
+    const timer = setInterval(() => {
+      const now = new Date()
+      if (now > TARGET_DATE) {
+        clearInterval(timer)
+        return
+      }
+
+      const dur = intervalToDuration({
+        start: now,
+        end: TARGET_DATE,
+      })
+      setDuration(dur)
+    }, 1000)
+
+    return () => clearInterval(timer)
+  }, [])
+
+  if (!isMounted) {
+    return <div className="h-32 animate-pulse bg-muted/10 rounded-xl" />
+  }
+
+  return (
+    <div className="flex flex-col items-center gap-6 w-full max-w-3xl mx-auto px-2 md:px-0">
+      <div className="relative group">
+        <div className="flex items-center gap-2 text-yellow-500 hover:text-yellow-400 transition-colors cursor-help">
+          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+          <span className="text-xs font-mono">Estimated Date</span>
+        </div>
+
+        {/* Tooltip on hover */}
+        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 md:w-80 p-4 bg-yellow-900/95 border border-yellow-600/50 rounded-sm backdrop-blur-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+          <div className="text-xs font-mono space-y-2">
+            <p className="text-yellow-200 leading-relaxed">
+              The actual halving date changes due to daily TAO recycling. This estimate assumes current recycling rates
+              continue.
+            </p>
+            <p className="text-yellow-200/70 text-[10px]">
+              <span className="font-bold">TIP:</span> Revisit periodically for updated estimates.
+            </p>
+          </div>
+          {/* Arrow pointing down */}
+          <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-px">
+            <div className="border-8 border-transparent border-t-yellow-900/95" />
+          </div>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 w-full">
+        <TimeUnit value={duration.days || 0} label="DAYS" />
+        <TimeUnit value={duration.hours || 0} label="HOURS" />
+        <TimeUnit value={duration.minutes || 0} label="MINUTES" />
+        <TimeUnit value={duration.seconds || 0} label="SECONDS" />
+      </div>
+
+      <div className="flex justify-center">
+        <ShareDialog />
+      </div>
+    </div>
+  )
+}
+
+function TimeUnit({ value, label }: { value: number; label: string }) {
+  return (
+    <div className="flex flex-col items-center justify-center p-4 md:p-6 bg-card/30 backdrop-blur-sm border border-border/50 rounded-sm hover:border-primary/50 transition-colors relative overflow-hidden group">
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <span className="text-3xl sm:text-5xl md:text-7xl font-mono font-bold tracking-tighter text-primary tabular-nums relative z-10">
+        {String(value).padStart(2, "0")}
+      </span>
+      <span className="text-[10px] md:text-sm text-muted-foreground font-mono mt-2 tracking-widest relative z-10">
+        {label}
+      </span>
+    </div>
+  )
+}
