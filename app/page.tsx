@@ -273,7 +273,7 @@ export default function Home() {
           </p>
           <div className="flex gap-8">
             <Link
-              href="https://x.com/bittensor"
+              href="https://x.com/opentensor"
               target="_blank"
               className="text-xs text-muted-foreground hover:text-white font-mono uppercase tracking-wider"
             >
