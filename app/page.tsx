@@ -29,11 +29,18 @@ export default function Home() {
     name: "Bittensor Halving Countdown",
     description:
       "Track the Bittensor (TAO) halving schedule with live countdown, block rewards, and emission statistics.",
-    url: typeof window !== "undefined" ? window.location.href : "",
+    url: "https://bittensor-halving.com",
     inLanguage: "en",
     publisher: {
       "@type": "Organization",
       name: "Bittensor Halving Tracker",
+      logo: "https://bittensor-halving.com/icon.svg",
+      sameAs: ["https://x.com/daredevil3x7"],
+    },
+    creator: {
+      "@type": "Person",
+      name: "Daredevil3x7",
+      url: "https://x.com/daredevil3x7",
     },
     about: {
       "@type": "Thing",
@@ -266,7 +273,7 @@ export default function Home() {
           </p>
           <div className="flex gap-8">
             <Link
-              href="https://twitter.com/bittensor_"
+              href="https://x.com/bittensor"
               target="_blank"
               className="text-xs text-muted-foreground hover:text-white font-mono uppercase tracking-wider"
             >

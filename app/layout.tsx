@@ -8,7 +8,7 @@ const geist = Geist({ subsets: ["latin"] })
 const geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://bittensor-halving.com"),
   title: "Bittensor Halving Countdown | TAO Halving Schedule & Stats",
   description:
     "Track the Bittensor (TAO) halving schedule. Live countdown, block rewards, inflation stats, and Stock-to-Flow model comparison with Bitcoin. Learn about decentralized AI mining.",
@@ -27,6 +27,8 @@ export const metadata: Metadata = {
     title: "Bittensor Halving Countdown",
     description: "The next era of machine intelligence scarcity. Track the TAO halving event.",
     type: "website",
+    siteName: "Bittensor-Halving.com",
+    url: "https://bittensor-halving.com",
     images: [
       {
         url: "/api/og",
@@ -41,6 +43,7 @@ export const metadata: Metadata = {
     title: "Bittensor Halving Countdown",
     description: "The next era of machine intelligence scarcity. Track the TAO halving event.",
     images: ["/api/og"],
+    creator: "@daredevil3x7",
   },
   generator: "v0.app",
   icons: {
