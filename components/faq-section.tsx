@@ -36,9 +36,10 @@ export function FaqSection() {
             How does the Halving affect miners?
           </AccordionTrigger>
           <AccordionContent className="font-mono text-muted-foreground leading-relaxed">
-            The halving reduces the block reward (emission) by 50%. This means the amount of TAO distributed to miners
-            and validators for their work is cut in half. Historically in crypto markets, this supply shock can lead to
-            increased competition and efficiency as participants vie for a scarcer resource.
+            The halving reduces both TAO and Alpha token emissions by 50%. This means rewards distributed to miners and
+            validators are cut in half. Subnets launched before a halving benefit from periods of faster liquidity
+            growth, while later subnets face slower growth due to the reduced emission rate. Historically, supply
+            reductions can lead to increased competition and efficiency among participants.
           </AccordionContent>
         </AccordionItem>
 
@@ -47,9 +48,10 @@ export function FaqSection() {
             What is the Yuma Consensus?
           </AccordionTrigger>
           <AccordionContent className="font-mono text-muted-foreground leading-relaxed">
-            Yuma Consensus is the mechanism Bittensor uses to reach agreement on the value of contributions. It is a
-            peer-to-peer algorithm that rewards nodes based on the consensus of other high-stake nodes in the network,
-            ensuring fair distribution of rewards based on value provided.
+            Yuma Consensus is Bittensor's algorithm that resolves validator rankings of miner performances into emission
+            vectors for both miners and validators. It ensures fair reward distribution by weighting validator
+            assessments based on their stake and trust scores, preventing manipulation and rewarding accurate
+            evaluations of network contributions.
           </AccordionContent>
         </AccordionItem>
 
@@ -68,10 +70,10 @@ export function FaqSection() {
             What is Recycling and how does it affect the halving date?
           </AccordionTrigger>
           <AccordionContent className="font-mono text-muted-foreground leading-relaxed">
-            Recycling refers to when TAO tokens are returned to the emission pool through registration fees, subnet
-            operations, or validator deregistrations. When tokens are recycled, they are removed from the circulating
-            supply and returned to the emission pool. This process delays the halving date because it takes longer to
-            reach the supply milestone. The more tokens recycled, the longer it takes to reach the next halving point.
+            Recycling occurs when TAO tokens are returned to the emission pool through subnet registration fees,
+            deregistrations, and network operations. These recycled tokens are removed from circulating supply and
+            returned to emissions. Since the halving is triggered by total token issuance (not block number), recycling
+            delays the halving date by reducing the rate at which the supply milestone is reached.
           </AccordionContent>
         </AccordionItem>
 
