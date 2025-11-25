@@ -16,12 +16,9 @@ import { MobileNav } from "@/components/mobile-nav"
 import { Terminal, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import { AddToCalendar } from "@/components/add-to-calendar"
-import { TipDialog } from "@/components/tip-dialog"
-import { Heart } from "lucide-react"
 
 export default function Home() {
   const [currentBlock, setCurrentBlock] = useState<number>(0)
-  const [showTipDialog, setShowTipDialog] = useState(false)
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -61,8 +58,8 @@ export default function Home() {
       <header className="w-full border-b border-white/10 bg-black/50 backdrop-blur-md sticky top-0 z-50">
         <div className="container mx-auto px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between gap-3">
           <Link href="/" className="flex items-center gap-3 sm:gap-2 hover:opacity-80 transition-opacity">
-            <div className="w-8 h-8 sm:w-8 sm:h-8 bg-white text-black flex items-center justify-center rounded-full font-bold font-mono flex-shrink-0">
-              τ
+            <div className="w-8 h-8 sm:w-8 sm:h-8 flex items-center justify-center flex-shrink-0">
+              <img src="/bittensor-logo.png" alt="Bittensor Logo" className="w-full h-full object-contain rounded-lg" />
             </div>
             <span className="font-mono font-bold text-base sm:text-lg tracking-tight hidden sm:inline-block">
               BITTENSOR HALVING
@@ -93,15 +90,6 @@ export default function Home() {
             >
               Network <ExternalLink className="w-3 h-3" />
             </Link>
-            <Button
-              onClick={() => setShowTipDialog(true)}
-              variant="outline"
-              size="sm"
-              className="font-mono border-red-500/30 text-red-400 hover:bg-red-500/10 hover:text-red-300 rounded-sm flex items-center gap-2"
-            >
-              <Heart className="w-4 h-4 fill-red-500/50" />
-              <span className="hidden lg:inline">Support</span>
-            </Button>
           </nav>
 
           <MobileNav />
@@ -315,9 +303,6 @@ export default function Home() {
           </nav>
         </div>
       </footer>
-
-      {/* Tip Dialog */}
-      <TipDialog open={showTipDialog} onOpenChange={setShowTipDialog} />
     </div>
   )
 }
