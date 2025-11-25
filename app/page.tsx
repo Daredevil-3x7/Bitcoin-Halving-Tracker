@@ -69,7 +69,7 @@ export default function Home() {
             </span>
           </Link>
 
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="hidden md:flex items-center gap-6" aria-label="Main navigation">
             <Link href="#faq" className="text-sm text-muted-foreground hover:text-primary transition-colors font-mono">
               FAQ
             </Link>
@@ -111,18 +111,24 @@ export default function Home() {
       {/* Main Content */}
       <main className="flex-1 container mx-auto px-4 py-8 sm:py-12 flex flex-col gap-10 sm:gap-16 md:gap-24">
         {/* Hero Section */}
-        <section className="flex flex-col items-center justify-center gap-6 sm:gap-8 text-center pt-4 sm:pt-10 pb-4 sm:pb-6 relative">
+        <section
+          className="flex flex-col items-center justify-center gap-6 sm:gap-8 text-center pt-4 sm:pt-10 pb-4 sm:pb-6 relative"
+          aria-labelledby="hero-heading"
+        >
           <ScanningBeam className="opacity-50" triggerScan={currentBlock} />
 
           <div className="space-y-3 sm:space-y-4 max-w-3xl relative z-10">
             <LiveBlockCounter onBlockUpdate={setCurrentBlock} />
-            <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold tracking-tighter font-mono leading-tight">
+            <h2
+              id="hero-heading"
+              className="text-3xl sm:text-5xl md:text-7xl font-bold tracking-tighter font-mono leading-tight"
+            >
               THE NEXT ERA OF
               <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/50">
                 MACHINE INTELLIGENCE
               </span>
-            </h1>
+            </h2>
             <p className="text-muted-foreground max-w-xl mx-auto font-mono text-xs sm:text-sm md:text-base leading-relaxed px-4 sm:px-0">
               Tracking the deflationary mechanics of the Bittensor network. The halving event reduces emission by 50%,
               increasing scarcity for the world's neural network.
@@ -132,7 +138,6 @@ export default function Home() {
           <div className="w-full">
             <HalvingCountdown />
 
-            {/* Added AddToCalendar button centered below countdown */}
             <div className="flex justify-center mt-4 sm:mt-6">
               <AddToCalendar
                 date={new Date("2025-12-13T00:48:06Z")}
@@ -167,23 +172,31 @@ export default function Home() {
         </section>
 
         {/* Stats Grid */}
-        <section>
+        <section aria-labelledby="stats-heading">
+          <h2 id="stats-heading" className="sr-only">
+            Network Statistics
+          </h2>
           <StatsGrid />
         </section>
 
         {/* Halving Schedule Table */}
-        <section className="space-y-4">
+        <section className="space-y-4" aria-labelledby="schedule-heading">
           <div className="flex items-center gap-2">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-            <span className="font-mono text-sm text-white/40">ISSUANCE SCHEDULE</span>
+            <h2 id="schedule-heading" className="font-mono text-sm text-white/40">
+              ISSUANCE SCHEDULE
+            </h2>
             <div className="h-px flex-1 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
           </div>
           <HalvingScheduleTable />
         </section>
 
         {/* Chart Section */}
-        <section className="grid lg:grid-cols-3 gap-6 sm:gap-8">
+        <section className="grid lg:grid-cols-3 gap-6 sm:gap-8" aria-labelledby="calculator-heading">
           <div className="lg:col-span-2">
+            <h2 id="calculator-heading" className="sr-only">
+              Supply Calculator
+            </h2>
             <SupplyCalculator />
           </div>
           <div className="space-y-4 sm:space-y-6 flex flex-col justify-center">
@@ -255,12 +268,18 @@ export default function Home() {
         </section>
 
         {/* FAQ Section */}
-        <section>
+        <section aria-labelledby="faq-heading">
+          <h2 id="faq-heading" className="sr-only">
+            Frequently Asked Questions
+          </h2>
           <FaqSection />
         </section>
 
         {/* Glossary Section */}
-        <section>
+        <section aria-labelledby="glossary-heading">
+          <h2 id="glossary-heading" className="sr-only">
+            Glossary
+          </h2>
           <GlossarySection />
         </section>
       </main>
@@ -271,7 +290,7 @@ export default function Home() {
           <p className="text-xs text-muted-foreground font-mono">
             © 2025 Bittensor Halving Tracker. Not official Bittensor site.
           </p>
-          <div className="flex gap-8">
+          <nav className="flex gap-8" aria-label="Social media links">
             <Link
               href="https://x.com/opentensor"
               target="_blank"
@@ -293,7 +312,7 @@ export default function Home() {
             >
               Opentensor
             </Link>
-          </div>
+          </nav>
         </div>
       </footer>
 

@@ -120,9 +120,12 @@ export function SupplyCalculator() {
         {/* Timeframe Selector */}
         <div className="space-y-4">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4">
-            <Label className="font-mono text-xs sm:text-sm text-muted-foreground">Select Timeframe (Days)</Label>
+            <Label htmlFor="days-input" className="font-mono text-xs sm:text-sm text-muted-foreground">
+              Select Timeframe (Days)
+            </Label>
             <div className="relative w-full sm:w-32">
               <Input
+                id="days-input"
                 type="number"
                 value={days[0]}
                 onChange={(e) => {
@@ -130,6 +133,7 @@ export function SupplyCalculator() {
                   if (!isNaN(val) && val >= 0) setDays([val])
                 }}
                 className="font-mono text-right pr-8 h-9 sm:h-8 bg-black/20 border-white/10 text-sm"
+                aria-label="Enter timeframe in days"
               />
               <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-muted-foreground font-mono">
                 d
@@ -137,10 +141,28 @@ export function SupplyCalculator() {
             </div>
           </div>
 
-          <Slider value={days} onValueChange={setDays} min={1} max={3650} step={1} className="w-full" />
+          <div>
+            <Label htmlFor="days-slider" className="sr-only">
+              Timeframe slider (1 to 3650 days)
+            </Label>
+            <Slider
+              id="days-slider"
+              value={days}
+              onValueChange={setDays}
+              min={1}
+              max={3650}
+              step={1}
+              className="w-full"
+              aria-label="Adjust timeframe using slider"
+            />
+          </div>
 
           {/* Quick Presets */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2">
+          <div
+            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2"
+            role="group"
+            aria-label="Timeframe presets"
+          >
             {timeframePresets.map((preset) => (
               <button
                 key={preset.label}
@@ -150,6 +172,8 @@ export function SupplyCalculator() {
                     ? "bg-primary text-primary-foreground border-primary"
                     : "bg-card/30 border-white/10 hover:border-white/30 hover:bg-card/50"
                 }`}
+                aria-label={`Set timeframe to ${preset.label}`}
+                aria-pressed={days[0] === preset.days}
               >
                 {preset.label}
               </button>

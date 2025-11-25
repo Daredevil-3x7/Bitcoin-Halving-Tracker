@@ -102,12 +102,33 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+/* Added font fallbacks to reduce layout shift */
+@font-face {
+  font-family: "Geist Fallback";
+  src: local("Arial");
+  ascent-override: 90%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+  size-adjust: 107%;
+}
+
+@font-face {
+  font-family: "Geist Mono Fallback";
+  src: local("Courier New");
+  ascent-override: 88%;
+  descent-override: 20%;
+  line-gap-override: 0%;
+  size-adjust: 105%;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
   body {
     @apply bg-background text-foreground font-sans antialiased;
+    /* Added content-visibility for better rendering performance */
+    content-visibility: auto;
   }
   h1,
   h2,
@@ -161,4 +182,15 @@
 
 .animate-scan-block {
   animation: scan-block 12s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Added reduced motion support for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
