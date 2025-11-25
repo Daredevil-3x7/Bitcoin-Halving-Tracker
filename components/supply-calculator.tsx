@@ -7,34 +7,26 @@ import { Slider } from "@/components/ui/slider"
 import { Input } from "@/components/ui/input"
 import { TrendingUp, Clock, Coins } from "lucide-react"
 
-// Current supply as of Dec 2024
-const CURRENT_SUPPLY = 10_273_217
+const CURRENT_SUPPLY = 10_367_654
 const CURRENT_BLOCK_REWARD = 1.0
 const BLOCKS_PER_DAY = 7200 // 1 block every 12 seconds
 const MAX_SUPPLY = 21_000_000
 
 function generateHalvingSchedule() {
-  const halvings = []
-  let supply = 10_500_000 // First halving at 50% of max supply
-  let reward = 0.5 // Reward after first halving
-  const year = 2025
-
-  // Generate halvings until reward becomes negligible (continue indefinitely)
-  for (let i = 0; i < 20; i++) {
-    // Generate 20 halvings to cover extreme timeframes
-    halvings.push({
-      supply: supply,
-      date: new Date(`${year + 4 * i}-12-10`),
-      reward: reward,
-    })
-
-    // Next halving occurs when we add half of remaining supply
-    const remaining = MAX_SUPPLY - supply
-    supply = supply + remaining / 2
-    reward = reward / 2
-  }
-
-  return halvings
+  return [
+    { supply: 10_500_000, date: new Date("2025-12-13"), reward: 0.5 },
+    { supply: 15_750_000, date: new Date("2029-12-11"), reward: 0.25 },
+    { supply: 18_375_000, date: new Date("2033-12-08"), reward: 0.125 },
+    { supply: 19_687_500, date: new Date("2037-12-05"), reward: 0.0625 },
+    { supply: 20_343_750, date: new Date("2041-12-03"), reward: 0.03125 },
+    { supply: 20_671_875, date: new Date("2045-11-30"), reward: 0.015625 },
+    { supply: 20_835_937.5, date: new Date("2049-11-27"), reward: 0.0078125 },
+    { supply: 20_917_968.75, date: new Date("2053-11-25"), reward: 0.00390625 },
+    { supply: 20_958_984.375, date: new Date("2057-11-22"), reward: 0.001953125 },
+    { supply: 20_979_492.1875, date: new Date("2061-11-19"), reward: 0.0009765625 },
+    { supply: 20_989_746.09375, date: new Date("2065-11-17"), reward: 0.00048828125 },
+    { supply: 20_994_873.046875, date: new Date("2069-11-14"), reward: 0.000244140625 },
+  ]
 }
 
 const HALVINGS = generateHalvingSchedule()

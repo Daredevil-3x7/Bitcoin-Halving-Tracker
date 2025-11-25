@@ -128,7 +128,7 @@ export default function Home() {
 
             <div className="flex justify-center mt-4 sm:mt-6">
               <AddToCalendar
-                date={new Date("2025-12-13T00:48:06Z")}
+                date={new Date("2025-12-13T00:00:00Z")}
                 title="Bittensor (TAO) Halving"
                 description="The first Bittensor Halving event. Block reward reduces from 1.0 TAO to 0.5 TAO."
               />

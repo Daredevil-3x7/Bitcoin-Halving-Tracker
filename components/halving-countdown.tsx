@@ -5,7 +5,7 @@ import { intervalToDuration } from "date-fns"
 import type { Duration } from "date-fns"
 import { ShareDialog } from "@/components/share-dialog"
 
-const TARGET_DATE = new Date("2025-12-13T00:48:06Z")
+const TARGET_DATE = new Date("2025-12-13T00:00:00Z")
 
 export function HalvingCountdown() {
   const [duration, setDuration] = useState<Duration>({
