@@ -313,6 +313,14 @@ export default function Home() {
             </p>
             <nav className="flex gap-8" aria-label="Social media links">
               <Link
+                href="https://github.com/daredevil3x7/bittensor-halving"
+                target="_blank"
+                className="text-xs text-muted-foreground hover:text-white font-mono uppercase tracking-wider"
+              >
+                GitHub
+              </Link>
+              {/* </CHANGE> */}
+              <Link
                 href="https://x.com/opentensor"
                 target="_blank"
                 className="text-xs text-muted-foreground hover:text-white font-mono uppercase tracking-wider"
