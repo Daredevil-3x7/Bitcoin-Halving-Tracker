@@ -274,33 +274,67 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="border-t border-white/10 bg-black py-12 mt-12">
-        <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-xs text-muted-foreground font-mono">
-            © 2025 Bittensor Halving Tracker. Not official Bittensor site.
-          </p>
-          <nav className="flex gap-8" aria-label="Social media links">
-            <Link
-              href="https://x.com/opentensor"
-              target="_blank"
-              className="text-xs text-muted-foreground hover:text-white font-mono uppercase tracking-wider"
-            >
-              Twitter
-            </Link>
-            <Link
-              href="https://discord.gg/bittensor"
-              target="_blank"
-              className="text-xs text-muted-foreground hover:text-white font-mono uppercase tracking-wider"
-            >
-              Discord
-            </Link>
-            <Link
-              href="https://bittensor.com"
-              target="_blank"
-              className="text-xs text-muted-foreground hover:text-white font-mono uppercase tracking-wider"
-            >
-              Opentensor
-            </Link>
-          </nav>
+        <div className="container mx-auto px-4 flex flex-col gap-6">
+          <div className="flex flex-col items-center gap-3 border-b border-white/10 pb-6">
+            <p className="text-sm text-muted-foreground font-mono">
+              Made with curiosity by{" "}
+              <Link
+                href="https://x.com/daredevil3x7"
+                target="_blank"
+                className="text-primary hover:text-primary/80 transition-colors underline"
+              >
+                Daredevil3x7
+              </Link>
+            </p>
+            <div className="flex items-center gap-2 bg-white/5 border border-white/10 rounded-sm px-4 py-2">
+              <span className="text-xs text-muted-foreground font-mono">TAO Wallet:</span>
+              <code className="text-xs font-mono text-white/90">5GxjL65bRAHTuDh2Zpziu4adGTDSLaWXa5vp65tJCECu2BtA</code>
+              <button
+                onClick={() => {
+                  navigator.clipboard.writeText("5GxjL65bRAHTuDh2Zpziu4adGTDSLaWXa5vp65tJCECu2BtA")
+                  const btn = document.activeElement as HTMLButtonElement
+                  const originalText = btn.textContent
+                  btn.textContent = "Copied!"
+                  setTimeout(() => {
+                    btn.textContent = originalText
+                  }, 2000)
+                }}
+                className="text-xs font-mono text-primary hover:text-primary/80 transition-colors px-2 py-1 rounded hover:bg-white/5"
+              >
+                Copy
+              </button>
+            </div>
+          </div>
+          {/* </CHANGE> */}
+
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+            <p className="text-xs text-muted-foreground font-mono">
+              © 2025 Bittensor Halving Tracker. Not official Bittensor site.
+            </p>
+            <nav className="flex gap-8" aria-label="Social media links">
+              <Link
+                href="https://x.com/opentensor"
+                target="_blank"
+                className="text-xs text-muted-foreground hover:text-white font-mono uppercase tracking-wider"
+              >
+                Twitter
+              </Link>
+              <Link
+                href="https://discord.gg/bittensor"
+                target="_blank"
+                className="text-xs text-muted-foreground hover:text-white font-mono uppercase tracking-wider"
+              >
+                Discord
+              </Link>
+              <Link
+                href="https://bittensor.com"
+                target="_blank"
+                className="text-xs text-muted-foreground hover:text-white font-mono uppercase tracking-wider"
+              >
+                Opentensor
+              </Link>
+            </nav>
+          </div>
         </div>
       </footer>
     </div>
