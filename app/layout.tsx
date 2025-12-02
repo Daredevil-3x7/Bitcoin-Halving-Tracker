@@ -10,9 +10,9 @@ const geistMono = Geist_Mono({ subsets: ["latin"], display: "swap" })
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://bittensor-halving.com"),
-  title: "Bittensor Halving Countdown | TAO Halving Schedule & Stats",
+  title: "Bittensor Halving Tracker | TAO Supply Calculator & Countdown",
   description:
-    "Track the Bittensor (TAO) halving schedule. Live countdown, block rewards, inflation stats, and Stock-to-Flow model comparison with Bitcoin. Learn about decentralized AI mining.",
+    "Official Bittensor (TAO) halving countdown to December 13, 2025. Track emission schedule, calculate future supply, explore halving phases, and monitor network stats. Complete TAO tokenomics resource.",
   keywords: [
     "Bittensor",
     "TAO",
@@ -23,10 +23,14 @@ export const metadata: Metadata = {
     "Decentralized Intelligence",
     "Stock to Flow",
     "Blockchain",
+    "Supply Calculator",
+    "Emission Schedule",
+    "Tokenomics",
   ],
   openGraph: {
-    title: "Bittensor Halving Countdown",
-    description: "The next era of machine intelligence scarcity. Track the TAO halving event.",
+    title: "Bittensor Halving Tracker | TAO Supply Calculator & Countdown",
+    description:
+      "Track the next TAO halving on December 13, 2025. Live countdown, supply calculator, emission schedule, and complete halving timeline.",
     type: "website",
     siteName: "Bittensor-Halving.com",
     url: "https://bittensor-halving.com",
@@ -41,8 +45,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Bittensor Halving Countdown",
-    description: "The next era of machine intelligence scarcity. Track the TAO halving event.",
+    title: "Bittensor Halving Tracker | TAO Supply Calculator",
+    description:
+      "Track the next TAO halving on December 13, 2025. Live countdown, supply calculator, emission schedule, and complete halving timeline.",
     images: ["/api/og"],
     creator: "@daredevil3x7",
   },
