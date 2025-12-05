@@ -16,6 +16,7 @@ import { MobileNav } from "@/components/mobile-nav"
 import { Terminal, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import { AddToCalendar } from "@/components/add-to-calendar"
+import { CustomVideoPlayer } from "@/components/custom-video-player"
 
 export default function Home() {
   const [currentBlock, setCurrentBlock] = useState<number>(0)
@@ -157,6 +158,11 @@ export default function Home() {
               </Button>
             </div>
           </div>
+        </section>
+
+        {/* Video Section */}
+        <section className="relative w-full max-w-5xl mx-auto" aria-label="Bittensor Network Video">
+          <CustomVideoPlayer src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/video5303223955501384139-3h360Ch5ppifpiDjh3ULLQceYltM8H.mp4" poster="/bittensor-logo.png" />
         </section>
 
         {/* Stats Grid */}
