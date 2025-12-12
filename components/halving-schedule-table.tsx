@@ -19,7 +19,7 @@ const halvingSchedule = [
     milestone: "10,500,000",
     reward: "0.50 TAO",
     emission: "3,600 / day",
-    date: "Dec 13, 2025",
+    date: "Dec 14, 2025", // Updated from Dec 13 to Dec 14, 2025
     status: "Upcoming",
   },
   {
