@@ -92,3 +92,5 @@ export function FaqSection() {
     </div>
   )
 }
+
+export { FaqSection as FAQSection }

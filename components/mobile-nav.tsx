@@ -28,6 +28,13 @@ export function MobileNav() {
           <div className="fixed top-14 right-0 w-64 bg-black/95 border-l border-b border-white/10 shadow-2xl z-50 animate-in slide-in-from-right">
             <nav className="flex flex-col p-4 gap-1">
               <Link
+                href="/partner"
+                onClick={() => setIsOpen(false)}
+                className="px-4 py-3 text-sm text-white hover:bg-white/10 rounded-sm transition-colors font-mono"
+              >
+                Be our Partner
+              </Link>
+              <Link
                 href="#faq"
                 onClick={() => setIsOpen(false)}
                 className="px-4 py-3 text-sm text-white hover:bg-white/10 rounded-sm transition-colors font-mono"

@@ -17,7 +17,7 @@ export function MouseTrail() {
 
     const updateSize = () => {
       canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
+      canvas.height = document.documentElement.scrollHeight
       if (cursor.current.x === 0 && cursor.current.y === 0) {
         cursor.current = { x: window.innerWidth / 2, y: window.innerHeight / 2 }
         follower.current = { x: window.innerWidth / 2, y: window.innerHeight / 2 }
@@ -27,8 +27,12 @@ export function MouseTrail() {
     window.addEventListener("resize", updateSize)
 
     const handleMouseMove = (e: MouseEvent) => {
-      cursor.current = { x: e.clientX, y: e.clientY }
+      cursor.current = {
+        x: e.clientX,
+        y: e.clientY + window.scrollY,
+      }
     }
+    // </CHANGE>
     window.addEventListener("mousemove", handleMouseMove)
 
     const animate = () => {

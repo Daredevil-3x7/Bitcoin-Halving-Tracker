@@ -68,6 +68,12 @@ export default function Home() {
           </Link>
 
           <nav className="hidden md:flex items-center gap-6" aria-label="Main navigation">
+            <Link
+              href="/partner"
+              className="text-sm text-muted-foreground hover:text-primary transition-colors font-mono"
+            >
+              Be our Partner
+            </Link>
             <Link href="#faq" className="text-sm text-muted-foreground hover:text-primary transition-colors font-mono">
               FAQ
             </Link>
