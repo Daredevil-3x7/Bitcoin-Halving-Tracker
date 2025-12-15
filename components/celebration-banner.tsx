@@ -6,7 +6,7 @@ import { X, Sparkles } from "lucide-react"
 export function CelebrationBanner() {
   const [isVisible, setIsVisible] = useState(true)
 
-  const halvingDate = new Date("2025-12-14T00:00:00Z")
+  const halvingDate = new Date("2024-12-15T00:00:00Z")
   const today = new Date()
   const hasHalvingHappened = today >= halvingDate
 
@@ -23,7 +23,7 @@ export function CelebrationBanner() {
           <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-yellow-500 animate-pulse flex-shrink-0" />
           <div className="text-center">
             <p className="font-mono text-sm sm:text-base md:text-lg font-bold text-white">
-              🎉 The First Bittensor Halving Happened on December 14th! 🎉
+              🎉 The First Bittensor Halving Happened on December 15th! 🎉
             </p>
             <p className="font-mono text-xs sm:text-sm text-yellow-100/80 mt-1">
               Block reward reduced from 1.0 TAO to 0.5 TAO
