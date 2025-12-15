@@ -1,18 +1,22 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { intervalToDuration } from "date-fns"
-import type { Duration } from "date-fns"
-import { ShareDialog } from "@/components/share-dialog"
 import { getNextHalving } from "@/lib/halving-dates"
+
+interface CountdownDuration {
+  years: number
+  days: number
+  hours: number
+  minutes: number
+}
 
 export function HalvingCountdown() {
   const [currentHalving, setCurrentHalving] = useState<{ phase: string; date: Date; milestone: string } | null>(null)
-  const [duration, setDuration] = useState<Duration>({
+  const [duration, setDuration] = useState<CountdownDuration>({
+    years: 0,
     days: 0,
     hours: 0,
     minutes: 0,
-    seconds: 0,
   })
   const [isMounted, setIsMounted] = useState(false)
 
@@ -25,29 +29,42 @@ export function HalvingCountdown() {
   useEffect(() => {
     if (!currentHalving) return
 
-    const timer = setInterval(() => {
+    const calculateDuration = () => {
       const now = new Date()
 
-      // Check if current halving has passed
-      if (now > currentHalving.date) {
-        // Switch to next halving
+      if (now >= currentHalving.date) {
         const nextHalving = getNextHalving()
         if (nextHalving) {
           setCurrentHalving(nextHalving)
         } else {
-          // No more halvings, clear timer
-          clearInterval(timer)
-          setDuration({ days: 0, hours: 0, minutes: 0, seconds: 0 })
+          setDuration({ years: 0, days: 0, hours: 0, minutes: 0 })
         }
         return
       }
 
-      const dur = intervalToDuration({
-        start: now,
-        end: currentHalving.date,
+      const totalSeconds = Math.floor((currentHalving.date.getTime() - now.getTime()) / 1000)
+
+      const years = Math.floor(totalSeconds / (365.25 * 24 * 60 * 60))
+      const remainingAfterYears = totalSeconds - years * 365.25 * 24 * 60 * 60
+
+      const days = Math.floor(remainingAfterYears / (24 * 60 * 60))
+      const remainingAfterDays = remainingAfterYears - days * 24 * 60 * 60
+
+      const hours = Math.floor(remainingAfterDays / (60 * 60))
+      const remainingAfterHours = remainingAfterDays - hours * 60 * 60
+
+      const minutes = Math.floor(remainingAfterHours / 60)
+
+      setDuration({
+        years,
+        days,
+        hours,
+        minutes,
       })
-      setDuration(dur)
-    }, 1000)
+    }
+
+    calculateDuration()
+    const timer = setInterval(calculateDuration, 60000) // Update every minute instead of every second
 
     return () => clearInterval(timer)
   }, [currentHalving])
@@ -81,7 +98,6 @@ export function HalvingCountdown() {
           <span className="text-xs font-mono">Estimated Date</span>
         </div>
 
-        {/* Tooltip on hover */}
         <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 md:w-80 p-4 bg-yellow-900/95 border border-yellow-600/50 rounded-sm backdrop-blur-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
           <div className="text-xs font-mono space-y-2">
             <p className="text-yellow-200 leading-relaxed">
@@ -92,7 +108,6 @@ export function HalvingCountdown() {
               <span className="font-bold">TIP:</span> Revisit periodically for updated estimates.
             </p>
           </div>
-          {/* Arrow pointing down */}
           <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-px">
             <div className="border-8 border-transparent border-t-yellow-900/95" />
           </div>
@@ -100,15 +115,13 @@ export function HalvingCountdown() {
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 w-full">
-        <TimeUnit value={duration.days || 0} label="DAYS" />
-        <TimeUnit value={duration.hours || 0} label="HOURS" />
-        <TimeUnit value={duration.minutes || 0} label="MINUTES" />
-        <TimeUnit value={duration.seconds || 0} label="SECONDS" />
+        <TimeUnit value={duration.years} label="YEARS" />
+        <TimeUnit value={duration.days} label="DAYS" />
+        <TimeUnit value={duration.hours} label="HOURS" />
+        <TimeUnit value={duration.minutes} label="MINUTES" />
       </div>
 
-      <div className="flex justify-center">
-        <ShareDialog />
-      </div>
+      <div className="flex justify-center">{/* Removed ShareDialog component */}</div>
     </div>
   )
 }

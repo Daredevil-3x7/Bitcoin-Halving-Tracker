@@ -18,9 +18,11 @@ import { Terminal, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import { AddToCalendar } from "@/components/add-to-calendar"
 import { CustomVideoPlayer } from "@/components/custom-video-player"
+import { getNextHalving } from "@/lib/halving-dates"
 
 export default function Home() {
   const [currentBlock, setCurrentBlock] = useState<number>(0)
+  const nextHalving = getNextHalving()
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -137,13 +139,15 @@ export default function Home() {
           <div className="w-full">
             <HalvingCountdown />
 
-            <div className="flex justify-center mt-4 sm:mt-6">
-              <AddToCalendar
-                date={new Date("2025-12-14T00:00:00Z")}
-                title="Bittensor (TAO) Halving"
-                description="The first Bittensor Halving event. Block reward reduces from 1.0 TAO to 0.5 TAO."
-              />
-            </div>
+            {nextHalving && (
+              <div className="flex justify-center mt-4 sm:mt-6">
+                <AddToCalendar
+                  date={nextHalving.date}
+                  title={`Bittensor (TAO) ${nextHalving.phase}`}
+                  description={`The ${nextHalving.phase} Bittensor Halving event. Block reward will be reduced by 50%.`}
+                />
+              </div>
+            )}
 
             <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 px-4 sm:px-0">
               <Button
@@ -321,7 +325,6 @@ export default function Home() {
               </button>
             </div>
           </div>
-          {/* </CHANGE> */}
 
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <p className="text-xs text-muted-foreground font-mono">
