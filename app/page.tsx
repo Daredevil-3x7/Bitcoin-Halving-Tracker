@@ -13,6 +13,7 @@ import { GlossarySection } from "@/components/glossary-section"
 import { HalvingScheduleTable } from "@/components/halving-schedule-table"
 import { MouseTrail } from "@/components/mouse-trail"
 import { MobileNav } from "@/components/mobile-nav"
+import { CelebrationBanner } from "@/components/celebration-banner"
 import { Terminal, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import { AddToCalendar } from "@/components/add-to-calendar"
@@ -54,6 +55,9 @@ export default function Home() {
 
       <NetworkBackground />
       <MouseTrail />
+
+      {/* Celebration Banner */}
+      <CelebrationBanner />
 
       {/* Header */}
       <header className="w-full border-b border-white/10 bg-black/50 backdrop-blur-md sticky top-0 z-50">

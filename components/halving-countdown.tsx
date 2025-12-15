@@ -4,10 +4,10 @@ import { useEffect, useState } from "react"
 import { intervalToDuration } from "date-fns"
 import type { Duration } from "date-fns"
 import { ShareDialog } from "@/components/share-dialog"
-
-const TARGET_DATE = new Date("2025-12-14T00:00:00Z")
+import { getNextHalving } from "@/lib/halving-dates"
 
 export function HalvingCountdown() {
+  const [currentHalving, setCurrentHalving] = useState<{ phase: string; date: Date; milestone: string } | null>(null)
   const [duration, setDuration] = useState<Duration>({
     days: 0,
     hours: 0,
@@ -18,29 +18,56 @@ export function HalvingCountdown() {
 
   useEffect(() => {
     setIsMounted(true)
+    const nextHalving = getNextHalving()
+    setCurrentHalving(nextHalving)
+  }, [])
+
+  useEffect(() => {
+    if (!currentHalving) return
+
     const timer = setInterval(() => {
       const now = new Date()
-      if (now > TARGET_DATE) {
-        clearInterval(timer)
+
+      // Check if current halving has passed
+      if (now > currentHalving.date) {
+        // Switch to next halving
+        const nextHalving = getNextHalving()
+        if (nextHalving) {
+          setCurrentHalving(nextHalving)
+        } else {
+          // No more halvings, clear timer
+          clearInterval(timer)
+          setDuration({ days: 0, hours: 0, minutes: 0, seconds: 0 })
+        }
         return
       }
 
       const dur = intervalToDuration({
         start: now,
-        end: TARGET_DATE,
+        end: currentHalving.date,
       })
       setDuration(dur)
     }, 1000)
 
     return () => clearInterval(timer)
-  }, [])
+  }, [currentHalving])
 
-  if (!isMounted) {
+  if (!isMounted || !currentHalving) {
     return <div className="h-32 animate-pulse bg-muted/10 rounded-xl" />
   }
 
   return (
     <div className="flex flex-col items-center gap-6 w-full max-w-3xl mx-auto px-2 md:px-0">
+      <div className="text-center mb-2">
+        <h3 className="text-sm md:text-base font-mono text-primary/80 mb-1">Counting down to</h3>
+        <h2 className="text-xl md:text-2xl font-mono font-bold text-primary uppercase tracking-wide">
+          {currentHalving.phase}
+        </h2>
+        <p className="text-xs md:text-sm font-mono text-muted-foreground mt-1">
+          Supply Milestone: {currentHalving.milestone} TAO
+        </p>
+      </div>
+
       <div className="relative group">
         <div className="flex items-center gap-2 text-yellow-500 hover:text-yellow-400 transition-colors cursor-help">
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
