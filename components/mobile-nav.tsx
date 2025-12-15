@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Menu, X, ExternalLink } from "lucide-react"
+import { Menu, X, ExternalLink, Gamepad2 } from "lucide-react"
 import Link from "next/link"
 
 export function MobileNav() {
@@ -27,6 +27,14 @@ export function MobileNav() {
           {/* Menu Panel */}
           <div className="fixed top-14 right-0 w-64 bg-black/95 border-l border-b border-white/10 shadow-2xl z-50 animate-in slide-in-from-right">
             <nav className="flex flex-col p-4 gap-1">
+              <Link
+                href="/game"
+                onClick={() => setIsOpen(false)}
+                className="px-4 py-3 text-sm font-mono font-bold rounded-sm bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 text-white flex items-center gap-2 mb-2"
+              >
+                <Gamepad2 className="w-4 h-4" />
+                Play Game
+              </Link>
               <Link
                 href="/partner"
                 onClick={() => setIsOpen(false)}

@@ -84,7 +84,7 @@ export default function PartnerPage() {
                   <div>
                     <h3 className="font-mono font-semibold mb-1">Low Bounce Rate</h3>
                     <p className="text-sm text-muted-foreground font-mono">
-                      82% of visitors explore multiple sections, demonstrating deep interest and quality traffic
+                      77% bounce rate with 23% of visitors exploring multiple sections, demonstrating quality engagement
                     </p>
                   </div>
                 </div>
@@ -148,6 +148,27 @@ export default function PartnerPage() {
                 </div>
               </div>
 
+              {/* In-Game Sponsorship */}
+              <div className="bg-card/30 border border-white/10 rounded-sm p-6 backdrop-blur-sm hover:border-primary/30 transition-colors">
+                <div className="flex items-start justify-between mb-4">
+                  <div>
+                    <h3 className="text-xl font-bold font-mono mb-2">In-Game Sponsorship</h3>
+                    <p className="text-sm text-muted-foreground font-mono">Featured in our Space Invaders game</p>
+                  </div>
+                  <span className="px-3 py-1 bg-purple-500/20 text-purple-400 text-xs font-mono rounded-full">
+                    INTERACTIVE
+                  </span>
+                </div>
+                <p className="text-sm text-muted-foreground font-mono mb-4">
+                  Your logo and branding displayed during gameplay, level transitions, and game-over screens. Highly
+                  engaging placement reaching users who spend 3-5 minutes actively interacting with your brand message.
+                </p>
+                <div className="flex items-center gap-2 text-xs text-muted-foreground font-mono">
+                  <div className="w-2 h-2 rounded-full bg-green-500" />
+                  Available
+                </div>
+              </div>
+
               {/* Top Navigation Banner */}
               <div className="bg-card/30 border border-white/10 rounded-sm p-6 backdrop-blur-sm hover:border-primary/30 transition-colors">
                 <div className="flex items-start justify-between mb-4">
@@ -188,6 +209,37 @@ export default function PartnerPage() {
             </div>
           </div>
 
+          {/* Traffic & Analytics */}
+          <div className="bg-card/30 border border-white/10 rounded-sm p-8 backdrop-blur-sm">
+            <h2 className="text-2xl font-bold font-mono mb-6 flex items-center gap-2">
+              <TrendingUp className="w-6 h-6 text-primary" />
+              Traffic & Performance Metrics
+            </h2>
+            <p className="text-sm text-muted-foreground font-mono mb-6">
+              Real analytics from our Vercel deployment showing consistent growth and strong engagement:
+            </p>
+            <div className="grid sm:grid-cols-3 gap-6 mb-6">
+              <div className="text-center space-y-2">
+                <div className="text-3xl font-bold font-mono text-primary">1,255</div>
+                <div className="text-sm text-muted-foreground font-mono">Unique Visitors</div>
+              </div>
+              <div className="text-center space-y-2">
+                <div className="text-3xl font-bold font-mono text-primary">1,764</div>
+                <div className="text-sm text-muted-foreground font-mono">Page Views</div>
+              </div>
+              <div className="text-center space-y-2">
+                <div className="text-3xl font-bold font-mono text-primary">77%</div>
+                <div className="text-sm text-muted-foreground font-mono">Bounce Rate</div>
+              </div>
+            </div>
+            <div className="text-xs text-muted-foreground font-mono space-y-1">
+              <p>• Strong traffic acceleration as halving event approached (Dec 14-15)</p>
+              <p>• 23% engagement rate with users exploring multiple sections</p>
+              <p>• Peak traffic reached 200+ visitors in a single day</p>
+              <p>• Growing daily with consistent upward trend post-halving</p>
+            </div>
+          </div>
+
           {/* Long-Term Vision */}
           <div className="bg-gradient-to-r from-primary/10 to-primary/5 border border-primary/20 rounded-sm p-8">
             <h2 className="text-2xl font-bold font-mono mb-4">Long-Term Vision & Growth Potential</h2>
@@ -212,6 +264,13 @@ export default function PartnerPage() {
                 <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
                 <p className="text-sm font-mono">
                   Educational resources (FAQ, Glossary, Network stats) to attract developers and investors
+                </p>
+              </li>
+              <li className="flex items-start gap-3">
+                <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                <p className="text-sm font-mono">
+                  Actively screening and planning new features for this site and the ecosystem to drive traffic and
+                  community engagement
                 </p>
               </li>
             </ul>
