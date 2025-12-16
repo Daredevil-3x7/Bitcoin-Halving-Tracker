@@ -14,7 +14,7 @@ import { HalvingScheduleTable } from "@/components/halving-schedule-table"
 import { MouseTrail } from "@/components/mouse-trail"
 import { MobileNav } from "@/components/mobile-nav"
 import { CelebrationBanner } from "@/components/celebration-banner"
-import { Terminal, ExternalLink, Gamepad2 } from "lucide-react"
+import { Terminal, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import { AddToCalendar } from "@/components/add-to-calendar"
 import { CustomVideoPlayer } from "@/components/custom-video-player"
@@ -74,14 +74,6 @@ export default function Home() {
           </Link>
 
           <nav className="hidden md:flex items-center gap-6" aria-label="Main navigation">
-            <Link
-              href="/game"
-              className="relative text-sm font-mono font-bold px-4 py-1.5 rounded-sm bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 text-white hover:opacity-90 transition-opacity flex items-center gap-2 shadow-lg shadow-purple-500/25"
-            >
-              <Gamepad2 className="w-4 h-4" />
-              Play Game
-              <span className="absolute -top-1 -right-1 w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
-            </Link>
             <Link
               href="/partner"
               className="text-sm text-muted-foreground hover:text-primary transition-colors font-mono"

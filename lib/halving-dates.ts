@@ -1,6 +1,6 @@
 export const HALVING_DATES = [
   { phase: "1st Halving", date: new Date("2024-12-15T00:00:00.000Z"), milestone: "10,500,000" },
-  { phase: "2nd Halving", date: new Date("2029-12-12T22:31:05.000Z"), milestone: "15,750,000" },
+  { phase: "2nd Halving", date: new Date("2029-12-11T00:00:00.000Z"), milestone: "15,750,000" },
   { phase: "3rd Halving", date: new Date("2033-12-08T00:00:00.000Z"), milestone: "18,375,000" },
   { phase: "4th Halving", date: new Date("2037-12-05T00:00:00.000Z"), milestone: "19,687,500" },
   { phase: "5th Halving", date: new Date("2041-12-03T00:00:00.000Z"), milestone: "20,343,750" },
